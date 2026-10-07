@@ -21,7 +21,7 @@ WSTRING = c_wchar_p
 from _ctypes import COMError
 comtypes.hresult.E_PENDING = 0x8000000A 
 
-import numpy.distutils.system_info as sysinfo
+from pykinect2.tools import system_info
 
 
 class _event(object):
@@ -2216,7 +2216,7 @@ tagSTATSTG._fields_ = [
     ('grfStateBits', c_ulong),
     ('reserved', c_ulong),
 ]
-required_size = 64 + sysinfo.platform_bits / 4
+required_size = 64 + system_info.get_platform_bits() / 4
 
 assert sizeof(tagSTATSTG) == required_size, sizeof(tagSTATSTG)
 assert alignment(tagSTATSTG) == 8, alignment(tagSTATSTG)
