@@ -292,7 +292,7 @@ class PyKinectRuntime(object):
 
 
     def body_joints_to_color_space(self, joints):
-        joint_points = numpy.ndarray((PyKinectV2.JointType_Count), dtype=numpy.object)
+        joint_points = numpy.ndarray((PyKinectV2.JointType_Count), dtype=object)
 
         for j in range(0, PyKinectV2.JointType_Count):
             joint_points[j] = self.body_joint_to_color_space(joints[j])
@@ -300,7 +300,7 @@ class PyKinectRuntime(object):
         return joint_points
 
     def body_joints_to_depth_space(self, joints):
-        joint_points = numpy.ndarray((PyKinectV2.JointType_Count), dtype=numpy.object)
+        joint_points = numpy.ndarray((PyKinectV2.JointType_Count), dtype=object)
 
         for j in range(0, PyKinectV2.JointType_Count):
             joint_points[j] = self.body_joint_to_depth_space(joints[j])
@@ -480,7 +480,7 @@ class KinectBodyFrameData(object):
             self.floor_clip_plane = bodyFrame.FloorClipPlane
             self.relative_time = bodyFrame.RelativeTime
 
-            self.bodies = numpy.ndarray((max_body_count), dtype=numpy.object)
+            self.bodies = numpy.ndarray((max_body_count), dtype=object)
             for i in range(0, max_body_count):
                self.bodies[i] = KinectBody(body_frame_data[i])
 
